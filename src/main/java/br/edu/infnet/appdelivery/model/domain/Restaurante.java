@@ -2,7 +2,7 @@ package br.edu.infnet.appdelivery.model.domain;
 
 import java.math.BigDecimal;
 
-public abstract class Restaurante {
+public class Restaurante {
 
     private Long id;
 
@@ -22,7 +22,8 @@ public abstract class Restaurante {
 
     private Integer maxTempoEntregaMinutos;
 
-    private Boolean aprovado;
+    private String contatoFone;
+
 
     private TipoDeCozinha tipoDeCozinha;
 
@@ -98,19 +99,36 @@ public abstract class Restaurante {
         this.maxTempoEntregaMinutos = maxTempoEntregaMinutos;
     }
 
-    public Boolean getAprovado() {
-        return aprovado;
-    }
-
-    public void setAprovado(Boolean aprovado) {
-        this.aprovado = aprovado;
-    }
-
     public TipoDeCozinha getTipoDeCozinha() {
         return tipoDeCozinha;
     }
 
     public void setTipoDeCozinha(TipoDeCozinha tipoDeCozinha) {
         this.tipoDeCozinha = tipoDeCozinha;
+    }
+
+    public String getContatoFone() {
+        return contatoFone;
+    }
+
+    public void setContatoFone(String contatoFone) {
+        this.contatoFone = contatoFone;
+    }
+
+    @Override
+    public String toString() {
+        return "Restaurante{" +
+                "id=" + id +
+                ", cnpj='" + cnpj + '\'' +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", cep='" + cep + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", taxaDeEntrega=" + taxaDeEntrega +
+                ", minTempoEntregaMinutos=" + minTempoEntregaMinutos +
+                ", maxTempoEntregaMinutos=" + maxTempoEntregaMinutos +
+                ", contatoFone='" + contatoFone + '\'' +
+                ", tipoDeCozinha=" + tipoDeCozinha +
+                '}';
     }
 }

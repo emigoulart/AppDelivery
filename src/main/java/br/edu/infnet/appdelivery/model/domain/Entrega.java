@@ -47,4 +47,15 @@ public class Entrega {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
+
+    @Override
+    public String toString() {
+        return "Entrega{" +
+                "id=" + id +
+                ", cliente=" + cliente +
+                ", cep='" + cep + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", complemento='" + complemento + '\'' +
+                '}';
+    }
 }

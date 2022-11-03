@@ -11,7 +11,7 @@ public class Pedido {
     private StatusPedido statusPedido;
     private Restaurante restaurante;
     private Entrega entrega;
-    private List<ItemPedido> itens = new ArrayList<>();
+    private List<Cardapio> itensCardapio = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -53,11 +53,23 @@ public class Pedido {
         this.entrega = entrega;
     }
 
-    public List<ItemPedido> getItens() {
-        return itens;
+    public List<Cardapio> getItensCardapio() {
+        return itensCardapio;
     }
 
-    public void setItens(List<ItemPedido> itens) {
-        this.itens = itens;
+    public void setItensCardapio(List<Cardapio> itensCardapio) {
+        this.itensCardapio = itensCardapio;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", dataHora=" + dataHora +
+                ", statusPedido=" + statusPedido +
+                ", restaurante=" + restaurante +
+                ", entrega=" + entrega +
+                ", itensCardapio=" + itensCardapio +
+                '}';
     }
 }
