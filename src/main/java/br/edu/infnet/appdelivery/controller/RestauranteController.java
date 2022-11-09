@@ -1,12 +1,16 @@
 package br.edu.infnet.appdelivery.controller;
 
 import br.edu.infnet.appdelivery.model.domain.Restaurante;
+import br.edu.infnet.appdelivery.model.domain.Usuario;
+import br.edu.infnet.appdelivery.model.service.RestauranteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,32 +20,34 @@ public class RestauranteController {
 	private static Map<Long, Restaurante> mapa = new HashMap<>();
 	private static Long id = 1L;
 
-	public static void incluir(Restaurante restaurante) {
-		restaurante.setId(id++);
-		mapa.put(restaurante.getId(), restaurante);
-		
-		System.out.println("> " + restaurante);
+	@Autowired
+	private RestauranteService restauranteService;
+
+	@PostMapping(value = "/restaurante/incluir")
+	public String incluir(Restaurante restaurante, @SessionAttribute("user") Usuario usuario) {
+
+		restaurante.setUsuario(usuario);
+
+		restauranteService.incluir(restaurante);
+
+		return "redirect:/restaurante/lista";
 	}
-	
-	public static void excluir(Integer id) {
-		mapa.remove(id);
+
+	@GetMapping(value = "/restaurante")
+	public String telaCadastro() {
+		return "restaurante/cadastro";
 	}
-	
-	public static Collection<Restaurante> obterLista(){
-		return mapa.values();
-	}
-		
 	@GetMapping(value = "/restaurante/lista")
 	public String telaLista(Model model) {
-		model.addAttribute("listagem", obterLista());
+		model.addAttribute("listagem", restauranteService.obterLista());
 
 		return "restaurante/lista";
 	}
 	
 	@GetMapping(value = "/restaurante/{id}/excluir")
-	public String exclusao(@PathVariable Integer id) {
+	public String excluir(@PathVariable Long id) {
 
-		excluir(id);
+		restauranteService.excluir(id);
 		
 		return "redirect:/restaurante/lista";
 	}

@@ -1,9 +1,14 @@
 package br.edu.infnet.appdelivery.model.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "trestaurante")
 public class Restaurante {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String cnpj;
@@ -24,8 +29,9 @@ public class Restaurante {
 
     private String contatoFone;
 
-
-    private TipoDeCozinha tipoDeCozinha;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -99,20 +105,20 @@ public class Restaurante {
         this.maxTempoEntregaMinutos = maxTempoEntregaMinutos;
     }
 
-    public TipoDeCozinha getTipoDeCozinha() {
-        return tipoDeCozinha;
-    }
-
-    public void setTipoDeCozinha(TipoDeCozinha tipoDeCozinha) {
-        this.tipoDeCozinha = tipoDeCozinha;
-    }
-
     public String getContatoFone() {
         return contatoFone;
     }
 
     public void setContatoFone(String contatoFone) {
         this.contatoFone = contatoFone;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
@@ -127,8 +133,7 @@ public class Restaurante {
                 ", taxaDeEntrega=" + taxaDeEntrega +
                 ", minTempoEntregaMinutos=" + minTempoEntregaMinutos +
                 ", maxTempoEntregaMinutos=" + maxTempoEntregaMinutos +
-                ", contatoFone='" + contatoFone + '\'' +
-                ", tipoDeCozinha=" + tipoDeCozinha +
+                ", contatoFone='" + contatoFone +
                 '}';
     }
 }

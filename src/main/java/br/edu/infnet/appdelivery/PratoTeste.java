@@ -2,6 +2,8 @@ package br.edu.infnet.appdelivery;
 
 import br.edu.infnet.appdelivery.controller.PratoController;
 import br.edu.infnet.appdelivery.model.domain.Prato;
+import br.edu.infnet.appdelivery.model.service.PratoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -14,6 +16,8 @@ import java.math.BigDecimal;
 @Component
 public class PratoTeste implements ApplicationRunner {
 
+	@Autowired
+	private PratoService pratoService;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("## Cadastramento de Pratos ##");
@@ -25,7 +29,7 @@ public class PratoTeste implements ApplicationRunner {
 		prato.setSugestaoChef(true);
 		prato.setPeso(300);
 
-		PratoController.incluir(prato);
+		pratoService.incluir(prato);
 
 		Prato prato2 = new Prato();
 		prato2.setNome("Massa aos 4 queijos");
@@ -34,7 +38,7 @@ public class PratoTeste implements ApplicationRunner {
 		prato2.setSugestaoChef(false);
 		prato2.setPeso(300);
 
-		PratoController.incluir(prato2);
+		pratoService.incluir(prato2);
 
 		Prato prato3 = new Prato();
 		prato3.setNome("Costela ao mollho barbecue");
@@ -43,7 +47,7 @@ public class PratoTeste implements ApplicationRunner {
 		prato3.setSugestaoChef(false);
 		prato3.setPeso(250);
 
-		PratoController.incluir(prato3);
+		pratoService.incluir(prato3);
 
 	}
 }

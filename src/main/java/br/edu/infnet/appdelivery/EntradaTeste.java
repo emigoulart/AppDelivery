@@ -1,8 +1,8 @@
 package br.edu.infnet.appdelivery;
 
-import br.edu.infnet.appdelivery.controller.CardapioController;
-import br.edu.infnet.appdelivery.controller.EntradaController;
 import br.edu.infnet.appdelivery.model.domain.Entrada;
+import br.edu.infnet.appdelivery.model.service.EntradaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -15,6 +15,8 @@ import java.math.BigDecimal;
 @Component
 public class EntradaTeste implements ApplicationRunner {
 
+	@Autowired
+	private EntradaService entradaService;
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("## Cadastramento de Entradas ##");
@@ -26,7 +28,7 @@ public class EntradaTeste implements ApplicationRunner {
 		entrada.setTamanho("pequena");
 		entrada.setCortesia(true);
 
-		EntradaController.incluir(entrada);
+		entradaService.incluir(entrada);
 
 		Entrada entrada2 = new Entrada();
 		entrada2.setNome("Pães australianos");
@@ -34,7 +36,7 @@ public class EntradaTeste implements ApplicationRunner {
 		entrada2.setCortesia(true);
 		entrada2.setQuantidade(3);
 		entrada2.setTamanho("pequena");
-		EntradaController.incluir(entrada2);
+		entradaService.incluir(entrada2);
 
 		Entrada entrada3 = new Entrada();
 		entrada3.setNome("Porção de tulipas de frango");
@@ -42,7 +44,7 @@ public class EntradaTeste implements ApplicationRunner {
 		entrada3.setCortesia(false);
 		entrada3.setQuantidade(1);
 		entrada3.setTamanho("pequena");
-		EntradaController.incluir(entrada3);
+		entradaService.incluir(entrada3);
 
 		Entrada entrada4= new Entrada();
 		entrada4.setNome("Hot philadelfia");
@@ -51,6 +53,6 @@ public class EntradaTeste implements ApplicationRunner {
 		entrada4.setDescricao("Sushi frito recheado com salmão com cream cheese");
 		entrada4.setTamanho("média");
 		entrada4.setQuantidade(8);
-		EntradaController.incluir(entrada4);
+		entradaService.incluir(entrada4);
 	}
 }

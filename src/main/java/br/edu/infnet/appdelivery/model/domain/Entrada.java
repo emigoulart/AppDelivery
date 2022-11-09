@@ -1,5 +1,10 @@
 package br.edu.infnet.appdelivery.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tentrada")
 public class Entrada extends Cardapio{
 
     private boolean cortesia;

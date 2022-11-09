@@ -1,8 +1,15 @@
 package br.edu.infnet.appdelivery.model.domain;
 
-public class Entrega {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "tentrega")
+public class Entrega {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     private String cep;
     private String endereco;

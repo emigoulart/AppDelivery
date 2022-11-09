@@ -1,0 +1,9 @@
+package br.edu.infnet.appdelivery.model.repository;
+
+import br.edu.infnet.appdelivery.model.domain.Pedido;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PedidoRepository extends CrudRepository<Pedido, Long> {
+}
