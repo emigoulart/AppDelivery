@@ -1,7 +1,14 @@
 package br.edu.infnet.appdelivery.model.domain;
 
-public class Cliente {
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tcliente")
+
+public class Cliente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     private String nome;
     private String cpf;

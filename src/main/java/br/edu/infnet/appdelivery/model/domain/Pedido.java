@@ -1,17 +1,30 @@
 package br.edu.infnet.appdelivery.model.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "tpedido")
 public class Pedido {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataHora;
     private StatusPedido statusPedido;
+    @Transient
     private Restaurante restaurante;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "entrega_id")
     private Entrega entrega;
-    private List<Cardapio> itensCardapio = new ArrayList<>();
+    @Transient
+    private List<Cardapio> itensCardapio;
 
     public Long getId() {
         return id;

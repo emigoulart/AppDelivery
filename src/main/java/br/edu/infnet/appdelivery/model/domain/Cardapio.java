@@ -1,9 +1,15 @@
 package br.edu.infnet.appdelivery.model.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "tcardapio")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Cardapio {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String descricao;
