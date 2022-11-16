@@ -1,7 +1,7 @@
 package br.edu.infnet.appdelivery.model.service;
 
+import br.edu.infnet.appdelivery.clients.IRestauranteClient;
 import br.edu.infnet.appdelivery.model.domain.Restaurante;
-import br.edu.infnet.appdelivery.model.repository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +10,20 @@ import java.util.Collection;
 @Service
 public class RestauranteService {
     @Autowired
-    private RestauranteRepository restauranteRepository;
+    private IRestauranteClient restauranteClient;
 
     public void incluir(Restaurante restaurante) {
-        restauranteRepository.save(restaurante);
+        restauranteClient.incluir(restaurante);
     }
-
     public void excluir(Long id) {
-        restauranteRepository.deleteById(id);
+        restauranteClient.excluir(id);
     }
 
     public Collection<Restaurante> obterLista(){
-        return (Collection<Restaurante>) restauranteRepository.findAll();
+        return (Collection<Restaurante>) restauranteClient.obterLista();
+    }
+
+    public Restaurante buscar(String nome){
+        return restauranteClient.buscar(nome);
     }
 }

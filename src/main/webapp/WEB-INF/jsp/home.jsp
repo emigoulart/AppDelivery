@@ -7,7 +7,6 @@
 	<title>AppDelivery</title>
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 	  <div class="container-fluid">
 	    <ul class="navbar-nav">
