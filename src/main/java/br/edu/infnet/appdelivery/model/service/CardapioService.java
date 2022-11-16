@@ -1,7 +1,6 @@
 package br.edu.infnet.appdelivery.model.service;
 
 import br.edu.infnet.appdelivery.model.domain.Cardapio;
-import br.edu.infnet.appdelivery.model.domain.Entrada;
 import br.edu.infnet.appdelivery.model.repository.CardapioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -16,16 +16,16 @@
 	        <a class="nav-link" href="/pedido/lista">Pedido</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/restaurante/lista">Solicitante</a>
+	        <a class="nav-link" href="/restaurante/lista">Restaurante</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/cardapio/lista">Produto</a>
+	        <a class="nav-link" href="/cardapio/lista">Cardapio</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/entrada/lista">Bebida</a>
+	        <a class="nav-link" href="/entrada/lista">Entrada</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/prato/lista">Comida</a>
+	        <a class="nav-link" href="/prato/lista">Prato</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="/sobremesa/lista">Sobremesa</a>
